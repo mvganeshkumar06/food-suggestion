@@ -6,6 +6,14 @@
   font-size: small;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 #container {
   min-height: 100vh;
   display: flex;
@@ -103,6 +111,9 @@ footer {
 }
 
 @media (min-width: 600px) {
+  * {
+    font-size: medium;
+  }
   button {
     margin: 10px;
     font-size: medium;
