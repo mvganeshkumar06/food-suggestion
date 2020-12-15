@@ -3,132 +3,23 @@ import './App.css';
 
 const App = () => {
 
-  const [breakfastOptions, setBreakfastOptions] = useState("");
-  const [lunchOptions, setLunchOptions] = useState("");
-  const [dinnerOptions, setDinnerOptions] = useState("");
-  const [fruitsOptions, setFruitsOptions] = useState("");
-  const [vegetablesOptions, setVegetablesOptions] = useState("");
-  const [snacksOptions, setSnacksOptions] = useState("");
+  const [foodOptions, setFoodOptions] = useState("");
 
-  const updateFood = (optionType, foodOption) => {
-    const result = foodOption.map((item, index) => {
+  const updateFood = (foodType) => {
+    const result = food[foodType].map((item, index) => {
       return <p className="foodItem" key={index}>{item}</p>;
     })
-
-    if (optionType === "breakfast") {
-      setBreakfastOptions(result);
-      setLunchOptions("");
-      setDinnerOptions("");
-      setFruitsOptions("");
-      setVegetablesOptions("");
-      setSnacksOptions("");
-    }
-    else if (optionType === "lunch") {
-      setBreakfastOptions("");
-      setLunchOptions(result);
-      setDinnerOptions("");
-      setFruitsOptions("");
-      setVegetablesOptions("");
-      setSnacksOptions("");
-    }
-    else if (optionType === "dinner") {
-      setBreakfastOptions("");
-      setLunchOptions("");
-      setDinnerOptions(result);
-      setFruitsOptions("");
-      setVegetablesOptions("");
-      setSnacksOptions("");
-    }
-    else if (optionType === "fruits") {
-      setBreakfastOptions("");
-      setLunchOptions("");
-      setDinnerOptions("");
-      setFruitsOptions(result);
-      setVegetablesOptions("");
-      setSnacksOptions("");
-    }
-    else if (optionType === "vegetables") {
-      setBreakfastOptions("");
-      setLunchOptions("");
-      setDinnerOptions("");
-      setFruitsOptions("");
-      setVegetablesOptions(result);
-      setSnacksOptions("");
-    }
-    else if (optionType === "snacks") {
-      setBreakfastOptions("");
-      setLunchOptions("");
-      setDinnerOptions("");
-      setFruitsOptions("");
-      setVegetablesOptions("");
-      setSnacksOptions(result);
-    }
+    setFoodOptions(result);
   }
 
-  const breakfast = [
-    "🍞 Bread",
-    "🧈 Butter",
-    "🥚 Egg",
-    "🥪 Sandwich",
-    "🥣 Soup",
-    "🥗 Green Salad",
-    "🥛 Glass of Milk"
-  ]
-
-  const lunch = [
-    "🍙 Rice Ball",
-    "🍚 Cooked Rice",
-    "🍛 Curry Rice",
-    "🍝 Spaghetti",
-    "🥫 Canned Food",
-  ]
-
-  const dinner = [
-    "🥪 Sandwich",
-    "🌮 Taco",
-    "🌯 Burrito",
-    "🍙 Rice Ball",
-    "🍱 Bento Box",
-    "🥧 Pie",
-    "🍛 Curry Rice",
-  ]
-
-  const fruits = [
-    "🍌 Banana",
-    "🍍 Pineapple",
-    "🥭 Mango",
-    "🍎 Red Apple",
-    "🍓 Strawberry",
-    "🍏 Green Apple",
-    "🍐 Pear",
-    "🍑 Peach",
-    "🍇 Grapes",
-    "🍈 Melon",
-    "🍉 Watermelon"
-  ]
-
-  const vegetables = [
-    "🥒 Cucumber",
-    "🥬 Leafy Green",
-    "🥦 Broccoli",
-    "🧅 Onion",
-    "🍄 Mushroom",
-    "🥔 Potato",
-    "🥕 Carrot"
-  ]
-
-  const snacks = [
-    "🍨 Ice Cream",
-    "🍩 Doughnut",
-    "🍪 Cookie",
-    "🍰 Cake",
-    "🥧 Pie",
-    "🍫 Chocolate Bar",
-    "🍬 Candy",
-    "🍔 Hamburger",
-    "🍟 French Fries",
-    "🍕 Pizza",
-  ]
+  const food = {
+    "breakfast": ["🍞 Bread", "🧈 Butter", "🥚 Egg", "🥪 Sandwich", "🥣 Soup", "🥗 Green Salad", "🥛 Glass of Milk"],
+    "lunch": ["🍙 Rice Ball", "🍚 Cooked Rice", "🍛 Curry Rice", "🍝 Spaghetti", "🥫 Canned Food"],
+    "dinner": ["🥪 Sandwich", "🌮 Taco", "🌯 Burrito", "🍙 Rice Ball", "🍱 Bento Box", "🥧 Pie", "🍛 Curry Rice"],
+    "fruits": ["🍌 Banana", "🍍 Pineapple", "🥭 Mango", "🍎 Red Apple", "🍓 Strawberry", "🍏 Green Apple", "🍐 Pear", "🍑 Peach", "🍇 Grapes", "🍈 Melon", "🍉 Watermelon"],
+    "vegetables": ["🥒 Cucumber", "🥬 Leafy Green", "🥦 Broccoli", "🧅 Onion", "🍄 Mushroom", "🥔 Potato", "🥕 Carrot"],
+    "snacks": ["🍨 Ice Cream", "🍩 Doughnut", "🍪 Cookie", "🍰 Cake", "🥧 Pie", "🍫 Chocolate Bar", "🍬 Candy", "🍔 Hamburger", "🍟 French Fries", "🍕 Pizza"]
+  }
 
   return (
     <>
@@ -136,22 +27,15 @@ const App = () => {
         <p id="mainHead"> 🥪 Food Suggestion</p>
         <p className="info"> Select the category to get food suggestions</p>
         <div id="btnContainer">
-          <button onClick={() => updateFood("breakfast", breakfast)}>Breakfast</button>
-          <button onClick={() => updateFood("lunch", lunch)}>Lunch</button>
-          <button onClick={() => updateFood("dinner", dinner)}>Dinner</button>
-          <button onClick={() => updateFood("fruits", fruits)}>Fruits</button>
-          <button onClick={() => updateFood("vegetables", vegetables)}>Vegetables</button>
-          <button onClick={() => updateFood("snacks", snacks)}>Snacks</button>
+          <button onClick={() => updateFood("breakfast")}>Breakfast</button>
+          <button onClick={() => updateFood("lunch")}>Lunch</button>
+          <button onClick={() => updateFood("dinner")}>Dinner</button>
+          <button onClick={() => updateFood("fruits")}>Fruits</button>
+          <button onClick={() => updateFood("vegetables")}>Vegetables</button>
+          <button onClick={() => updateFood("snacks")}>Snacks</button>
         </div>
         <div id="outputContainer">
-
-          {breakfastOptions ? breakfastOptions : null}
-          {lunchOptions ? lunchOptions : null}
-          {dinnerOptions ? dinnerOptions : null}
-          {fruitsOptions ? fruitsOptions : null}
-          {vegetablesOptions ? vegetablesOptions : null}
-          {snacksOptions ? snacksOptions : null}
-
+          {foodOptions ? foodOptions : null}
         </div>
         <footer>
           <div id="socialFooter">
